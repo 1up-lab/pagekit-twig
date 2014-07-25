@@ -5,14 +5,14 @@ namespace Oneup\PagekitTwig;
 use Oneup\PagekitTwig\Provider\TwigProvider;
 use Pagekit\Extension\Extension;
 use Pagekit\Framework\Application;
-use Pagekit\Hello\Event\HelloListener;
-use Pagekit\System\Event\LinkEvent;
-use Pagekit\Widget\Event\RegisterWidgetEvent;
 
 class TwigExtension extends Extension
 {
     /**
-     * {@inheritdoc}
+     * Registers the TwigProvider, so it will be
+     * properly loaded.
+     *
+     * @param Application $app
      */
     public function boot(Application $app)
     {
@@ -23,16 +23,13 @@ class TwigExtension extends Extension
 
     public function enable()
     {
-        // do nothing
     }
 
     public function disable()
     {
-        // do nothing
     }
 
     public function uninstall()
     {
-        // do nothing
     }
 }
