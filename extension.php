@@ -1,11 +1,10 @@
 <?php
 
 return [
-    'main' => 'Oneup\\Twig\\TwigExtension',
+    'main' => 'Oneup\\PagekitTwig\\TwigExtension',
     'autoload' => [
-        'Oneup\\Twig\\' => 'src'
+        'Oneup\\PagekitTwig\\' => 'src'
     ],
-    'controllers' => 'src/Controller/*Controller.php',
     'menu' => [
         'hello' => [
             'label'  => 'Twig',

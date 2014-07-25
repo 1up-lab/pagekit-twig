@@ -1,8 +1,8 @@
 <?php
 
-namespace Oneup\Twig;
+namespace Oneup\PagekitTwig;
 
-use Oneup\Twig\Provider\TwigProvider;
+use Oneup\PagekitTwig\Provider\TwigProvider;
 use Pagekit\Extension\Extension;
 use Pagekit\Framework\Application;
 use Pagekit\Hello\Event\HelloListener;

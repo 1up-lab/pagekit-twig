@@ -1,6 +1,6 @@
 <?php
 
-namespace Oneup\Twig\Engine;
+namespace Oneup\PagekitTwig\Twig;
 
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Templating\TemplateNameParserInterface;
@@ -76,14 +76,9 @@ class Engine implements EngineInterface
             return $name;
         }
 
-        $template = $this->parser->parse($name);
-
-        if (!file_exists($path = $template->getPath())) {
-            throw new \InvalidArgumentException(sprintf('The template "%s" does not exist.', $name));
-        }
-
         try {
-            return $this->environment->loadTemplate(file_get_contents($template->getPath()));
+            return $this->environment->loadTemplate($name);
+
         } catch (\Twig_Error_Loader $e) {
             throw new \InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }

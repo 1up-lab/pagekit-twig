@@ -1,8 +1,9 @@
 <?php
 
-namespace Oneup\Twig\Provider;
+namespace Oneup\PagekitTwig\Provider;
 
-use Oneup\Twig\Engine\Engine;
+use Oneup\PagekitTwig\Twig\Loader;
+use Oneup\PagekitTwig\Twig\Engine;
 use Pagekit\Framework\Application;
 use Pagekit\Framework\ServiceProviderInterface;
 use Pagekit\Framework\Templating\TemplateNameParser;
@@ -12,10 +13,13 @@ class TwigProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
-        // TODO $app['path'] . '/app/cache/templates');
-        $loader = new \Twig_Loader_String();
-        $twig = new Twig_Environment($loader);
+        $loader = new Loader($app['tmpl.parser']);
+        $twig = new Twig_Environment($loader, [
+            'cache' => $app['path'] . '/app/cache/templates',
+            'debug' => true
+        ]);
 
+        /** @var TemplateNameParser $parser */
         $parser = $app['tmpl.parser'];
         $parser->addEngine('twig', '.twig');
 
