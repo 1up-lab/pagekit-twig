@@ -24,10 +24,7 @@ class Engine implements EngineInterface
      * @param array $parameters An array of parameters to pass to the template
      *
      * @return string The evaluated template as a string
-     *
      * @throws \RuntimeException if the template cannot be rendered
-     *
-     * @api
      */
     public function render($name, array $parameters = array())
     {
@@ -40,14 +37,17 @@ class Engine implements EngineInterface
      * @param string|TemplateReferenceInterface $name A template name or a TemplateReferenceInterface instance
      *
      * @return bool    true if the template exists, false otherwise
-     *
      * @throws \RuntimeException if the engine cannot handle the template name
-     *
-     * @api
      */
     public function exists($name)
     {
-        // TODO: Implement exists() method.
+        try {
+            $this->environment->loadTemplate($name);
+        } catch (\Twig_Error_Loader $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -56,8 +56,6 @@ class Engine implements EngineInterface
      * @param string|TemplateReferenceInterface $name A template name or a TemplateReferenceInterface instance
      *
      * @return bool    true if this class supports the given template, false otherwise
-     *
-     * @api
      */
     public function supports($name)
     {
@@ -70,6 +68,13 @@ class Engine implements EngineInterface
         return 'twig' === $template->get('engine');
     }
 
+    /**
+     * Load a template by the given handle.
+     *
+     * @param $name
+     * @return \Twig_TemplateInterface
+     * @throws \InvalidArgumentException
+     */
     protected function load($name)
     {
         if ($name instanceof \Twig_Template) {
@@ -78,7 +83,6 @@ class Engine implements EngineInterface
 
         try {
             return $this->environment->loadTemplate($name);
-
         } catch (\Twig_Error_Loader $e) {
             throw new \InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
         }
