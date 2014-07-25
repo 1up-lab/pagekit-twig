@@ -3,6 +3,19 @@
 This is a [Twig](http://twig.sensiolabs.org/) extension for the [Pagekit CMS](http://pagekit.com/).
 It basically allows you to use twig as a template engine.
 
+## Installation
+
+In order to use this extension, you need to download and install `twig/twig`.
+Add the following line to the require section of your composer json file and run a `composer.phar update`.
+
+```json
+{
+    "require": {
+        "twig/twig": "~1.0"
+    }
+}
+```
+
 ## License
 
 This bundle is licenced under the MIT license. See the complete license text [here](LICENSE).
