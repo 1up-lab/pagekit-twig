@@ -1,0 +1,33 @@
+{% if (root.depth == 0) %}
+    <ul class="uk-nav {{ ( not classes ? 'uk-nav-side' : '' ) }}{{ ( options.classes ? ' ' ~ options.classes : '' ) }}">
+{% endif %}
+
+{% for item in root.children %}
+    {% set header  = ( item.url == '!header' ) %}
+    {% set divider = ( item.url == '!divider' ) %}
+
+    {% set classes = [] %}
+    {% set classes = classes | merge([( item.attribute('parent') ? 'uk-parent' : '')]) %}
+    {% set classes = classes | merge([( item.attribute('active') ? 'uk-active' : '')]) %}
+    {% set classes = classes | merge([( header ? 'uk-nav-header' : '')]) %}
+    {% set classes = classes | merge([( divider ? 'uk-nav-divider' : '')]) %}
+    {% set classes = classes | join(' ') | trim %}
+
+    <li class="{{ classes }}"{{ ( root.depth == 0 and item.hasChildren ) ? ' data-uk-dropdown' : '' }}>
+        {% if ( header) %}
+            {{ item }}
+        {% elseif ( not divider) %}
+            <a href="{{ url(item.url) }}">{{ item }}</a>
+        {% endif %}
+
+        {% if ( item.hasChildren and (item.attribute('active') or widget.get('mode', 'all') == 'all' or not root.depth == 0) ) %}
+            <ul class="uk-nav-sub">
+                {{ include('extension://twig/src/views/widgets/menu/nav.twig', { 'root': item }) }}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}
+
+{% if ( root.depth == 0) %}
+    </ul>
+{% endif %}

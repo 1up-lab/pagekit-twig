@@ -2,8 +2,8 @@
     "name": "twig",
     "version": "0.1.1",
     "type": "extension",
-    "title": "Twig",
-    "description": "Use Twig as template engine in your Pagekit installation.",
+    "title": "PagekitTwig",
+    "description": "Use twig as template engine in your Pagekit installation.",
     "license": "MIT",
     "authors": [
         {

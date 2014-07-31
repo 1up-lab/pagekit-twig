@@ -2,7 +2,6 @@
 
 This is a [Twig](http://twig.sensiolabs.org/) extension for the [Pagekit CMS](http://pagekit.com/).
 It basically allows you to use twig as a template engine.
-You can find this extension in the [official marketplace](http://pagekit.com/marketplace/view/twig).
 
 ## Installation
 
