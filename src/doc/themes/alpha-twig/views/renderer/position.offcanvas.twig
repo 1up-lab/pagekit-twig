@@ -1,8 +1,0 @@
-{% for widget in value %}
-    {% if ( widget.type == 'widget.menu' ) %}
-        {% set options = options | merge({ 'layout': 'extension://twig/src/views/widgets/menu/nav.twig', 'classes': 'uk-nav-offcanvas' }) %}
-        {{ widget.render(options) | raw }}
-    {% else %}
-        {{ include('theme://alpha-twig/views/renderer/position.panel.twig', { 'value': [ widget ] }) }}
-    {% endif %}
-{% endfor %}

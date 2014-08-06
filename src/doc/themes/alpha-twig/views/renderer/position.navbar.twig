@@ -1,8 +1,0 @@
-{% for widget in value %}
-    {% if widget.type == 'widget.menu' %}
-        {% set options = options | merge({ 'layout': 'extension://twig/src/views/widgets/menu/navbar.twig' }) %}
-        {{ widget.render(options) | raw }}
-    {% else %}
-        {{ widget.render(options) | raw }}
-    {% endif %}
-{% endfor %}
