@@ -1,6 +1,6 @@
 {
     "name": "twig",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "type": "extension",
     "title": "Twig",
     "description": "Use Twig as template engine in your Pagekit installation.",
