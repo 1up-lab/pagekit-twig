@@ -6,16 +6,10 @@ You can find this extension in the [official marketplace](http://pagekit.com/mar
 
 ## Installation
 
-In order to use this extension, you need to download and install `twig/twig`.
-Add the following line to the require section of your composer json file and run a `composer.phar update`.
+In order to use this extension, you need to add the extension using the [official marketplace](http://pagekit.com/marketplace/view/twig).
+Then use the Pagekit CLI to update dependencies.
 
-```json
-{
-    "require": {
-        "twig/twig": "~1.0"
-    }
-}
-```
+    ./pagekit extension:composer twig
 
 ## License
 
