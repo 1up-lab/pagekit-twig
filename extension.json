@@ -14,5 +14,11 @@
     ],
     "extra": {
         "image": "twig.svg"
+    },
+    "composer": {
+        "require": {
+            "twig/twig": "~1.0"
+        },
+        "minimum-stability": "dev"
     }
 }
